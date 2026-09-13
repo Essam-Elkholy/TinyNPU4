@@ -1,20 +1,39 @@
-<!---
-
-This file is used to generate your project datasheet. Please fill in the information below and delete any unused
-sections.
-
-You can also include images in this folder and reference them in the markdown. Each image must be less than
-512 kb in size, and the combined size of all images must be less than 1 MB.
--->
-
 ## How it works
 
-Explain how your project works
+CatDog TinyNPU is a host-controlled 64-4-1 quantized neural-network accelerator.
+The host converts a photo to 8x8 grayscale signed INT4 pixels. Two signed INT4
+MAC lanes share each streamed pixel and consume two independent weights, so two
+hidden neurons are computed in parallel. Each lane has a signed 16-bit
+saturating accumulator. Hidden results use ReLU; the final result uses Linear
+activation. `ui_in[0]` selects a lane during bias, finish and debug commands.
+
+After the output neuron, `uo_out[6] = 0` means Cat and `uo_out[6] = 1` means
+Dog. `uo_out[3:0]` is the saturated signed INT4 score.
 
 ## How to test
 
-Explain how to use your project
+The automated Cocotb test is in `test/test.py`. From the `test` directory run:
+
+```sh
+make
+```
+
+The test checks reset, pin directions, a complete two-lane 64-4-1 inference
+schedule, both MAC lanes, ReLU, Linear saturation, final class sign, independent
+signed 16-bit saturation boundaries, and full accumulator debug readback.
+
+Train and quantize the real Cat/Dog model separately with:
+
+```sh
+python -m pip install -r ml/requirements.txt
+python ml/train_and_quantize.py
+```
+
+Training creates `ml/artifacts/model_int4.json`, containing the weights, biases
+and shifts streamed to the chip.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+No external hardware is needed for RTL simulation. A fabricated-chip test needs
+a Tiny Tapeout demo board and a host computer or microcontroller to drive the
+input and command pins. No PMOD or display is required.
