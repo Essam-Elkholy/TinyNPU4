@@ -1,56 +1,59 @@
 # Tiny Tapeout project information
 project:
-  title:        ""      # Project title
-  author:       ""      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
-  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
+  title:        "TinyNPU4"
+  author:       "Essam Mohammed Elkholy"
+  discord:      "essam_mohamed."
+  description:  "Host-controlled INT4 neural-network accelerator with two parallel MAC lanes"
+  language:     "SystemVerilog"
+  clock_hz:     50000000
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
   tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_example"
+  top_module:  "tt_um_tinynpu4"
 
   # List your project's source files here.
   # Source files must be in ./src and you must list each source file separately, one per line.
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
-    - "project.v"
+    - "tt_um_tinynpu4.v"
+    - "tinynpu4_core.v"
+    - "int4_mac.sv"
+    - "activation_quantizer.sv"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
   # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  ui[0]: "activation[0]_or_lane_select"
+  ui[1]: "activation[1]"
+  ui[2]: "activation[2]"
+  ui[3]: "activation[3]"
+  ui[4]: "weight_lane0[0]"
+  ui[5]: "weight_lane0[1]"
+  ui[6]: "weight_lane0[2]"
+  ui[7]: "weight_lane0[3]"
 
   # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+  uo[0]: "result[0]"
+  uo[1]: "result[1]"
+  uo[2]: "result[2]"
+  uo[3]: "result[3]"
+  uo[4]: "done"
+  uo[5]: "overflow"
+  uo[6]: "accumulator_negative"
+  uo[7]: "result_valid"
 
   # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  uio[0]: "command[0]"
+  uio[1]: "command[1]"
+  uio[2]: "command[2]"
+  uio[3]: "command_valid"
+  uio[4]: "weight_lane1_or_param[0]"
+  uio[5]: "weight_lane1_or_param[1]"
+  uio[6]: "weight_lane1_or_param[2]"
+  uio[7]: "weight_lane1_or_param[3]"
 
 # Do not change!
 yaml_version: 6
