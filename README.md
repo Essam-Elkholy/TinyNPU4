@@ -132,9 +132,9 @@ to drive the input and command pins — no PMOD or display is required.
 
 | | |
 |---|---|
-| **Title** | CatDog TinyNPU 64-4-1 |
+| **Title** | TinyNPU 64-4-1 |
 | **Author** | Essam Elkholy and Team |
-| **Language** | SystemVerilog |
+| **Language** | Verilog |
 | **Clock** | 50 MHz |
 | **Tiles** | 1x1 |
 | **Top module** | `tt_um_tinynpu4` |
