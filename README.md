@@ -128,11 +128,25 @@ No external hardware is needed for RTL simulation. Running on a fabricated
 chip requires a Tiny Tapeout demo board and a host computer or microcontroller
 to drive the input and command pins — no PMOD or display is required.
 
+## Layout / GDS
+
+The design has been hardened and routed for the IHP SG13G2 open-source PDK.
+
+| | |
+|---|---|
+| ![GDS layout](images/gds_layout_1.png) | ![GDS layout, routing detail](images/gds_layout_2.png) |
+| ![GDS layout, standard-cell rows](images/gds_layout_3.png) | |
+
+Explore the layout interactively:
+
+- **3D viewer:** https://gds-viewer.tinytapeout.com/?model=https://essam-elkholy.github.io/TinyNPU4/tinytapeout.oas&pdk=ihp-sg13g2
+- **GDS explorer (2D, layer-by-layer):** https://gds-explorer.tinytapeout.com/viewer?file=https://essam-elkholy.github.io/TinyNPU4/tinytapeout.oas&pdk=ihp-sg13g2
+
 ## Project info
 
 | | |
 |---|---|
-| **Title** | TinyNPU 64-4-1 |
+| **Title** | TinyNPU4 |
 | **Author** | Essam Elkholy and Team |
 | **Language** | Verilog |
 | **Clock** | 50 MHz |
