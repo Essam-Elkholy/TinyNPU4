@@ -1,47 +1,19 @@
-# Sample testbench for a Tiny Tapeout project
+# CatDog TinyNPU tests
 
-This is a sample testbench for a Tiny Tapeout project. It uses [cocotb](https://docs.cocotb.org/en/stable/) to drive the DUT and check the outputs.
-See below to get started or for more information, check the [website](https://tinytapeout.com/hdl/testing/).
-
-## Setting up
-
-1. Edit [Makefile](Makefile) and modify `PROJECT_SOURCES` to point to your Verilog files.
-2. Edit [tb.v](tb.v) and replace `tt_um_example` with your module name.
-
-## How to run
-
-To run the RTL simulation:
+The Tiny Tapeout testbench uses Cocotb:
 
 ```sh
-make -B
+python -m pip install -r requirements.txt
+make
 ```
 
-To run gatelevel simulation, first harden your project and copy `../runs/wokwi/results/final/verilog/gl/{your_module_name}.v` to `gate_level_netlist.v`.
+`tb_tt_um_tinynpu4.v` instantiates the real top module, `tt_um_tinynpu4`.
+`test.py` drives the same pin-level command protocol used by a host computer or
+microcontroller.
 
-Then run:
+The test covers reset, pin direction, four 64-input hidden neurons, the
+four-input output neuron, two parallel MAC lanes, ReLU and Linear behavior,
+Cat/Dog class sign, full accumulator readback, and signed 16-bit saturation.
 
-```sh
-make -B GATES=yes
-```
-
-If you wish to save the waveform in VCD format instead of FST format, edit tb.v to use `$dumpfile("tb.vcd");` and then run:
-
-```sh
-make -B FST=
-```
-
-This will generate `tb.vcd` instead of `tb.fst`.
-
-## How to view the waveform file
-
-Using GTKWave
-
-```sh
-gtkwave tb.fst tb.gtkw
-```
-
-Using Surfer
-
-```sh
-surfer tb.fst
-```
+GitHub Actions runs this test after every push. Gate-level testing reuses the
+same Cocotb test after the GDS flow generates `gate_level_netlist.v`.
