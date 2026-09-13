@@ -1,6 +1,6 @@
-// The Core Unit - tinynpu4_core.v
-// Cat/Dog 64-4-1 inference datapath with two parallel MAC lanes
-// Made by Essam Elkholy and Team
+// The Core Unit  -  tinynpu4_core.v
+// Made and tested by Essam Elkholy and Mohamed Awad
+// Github link: https://github.com/Essam-Elkholy  "GlitchPi"
 //
 
 `default_nettype none
