@@ -1,0 +1,4 @@
+tensorflow>=2.16
+tensorflow-datasets>=4.9
+numpy>=1.26
+Pillow>=10.0
