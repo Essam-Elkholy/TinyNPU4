@@ -9,7 +9,7 @@ image as **Cat** or **Dog**. Training and quantization happen on the host CPU;
 the chip performs the actual hidden-layer and output-layer arithmetic on a
 command-driven, bit-serial datapath.
 
-**[Video Demo](#)** · **[Explore the chip in 3D](https://gds-viewer.tinytapeout.com/?model=https://essam-elkholy.github.io/TinyNPU4/tinytapeout.oas&pdk=ihp-sg13g2)** · **[GDS layer explorer](https://gds-explorer.tinytapeout.com/viewer?file=https://essam-elkholy.github.io/TinyNPU4/tinytapeout.oas&pdk=ihp-sg13g2)**
+**[Video Demo](https://drive.google.com/file/d/16Wu-LugIUdYGawcPZbRFVvr4zzuM8k5m/view?usp=drive_link)** · **[Explore the chip in 3D](https://gds-viewer.tinytapeout.com/?model=https://essam-elkholy.github.io/TinyNPU4/tinytapeout.oas&pdk=ihp-sg13g2)** · **[GDS layer explorer](https://gds-explorer.tinytapeout.com/viewer?file=https://essam-elkholy.github.io/TinyNPU4/tinytapeout.oas&pdk=ihp-sg13g2)**
 
 ## How it works
 
