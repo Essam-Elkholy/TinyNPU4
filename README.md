@@ -1,4 +1,4 @@
-## TinyNPU 64-4-1
+## TinyNPU4
 
 [![GDS](../../actions/workflows/gds.yaml/badge.svg)](../../actions/workflows/gds.yaml)
 [![Docs](../../actions/workflows/docs.yaml/badge.svg)](../../actions/workflows/docs.yaml)
